@@ -34,4 +34,5 @@ dependencies {
 bootJar {
     archiveFileName = 'main.jar'
     exclude('org/projectlombok/lombok')
+    loaderImplementation = org.springframework.boot.loader.tools.LoaderImplementation.CLASSIC
 }
