@@ -34,5 +34,8 @@ dependencies {
 bootJar {
     archiveFileName = 'main.jar'
     exclude('org/projectlombok/lombok')
-    loaderImplementation = org.springframework.boot.loader.tools.LoaderImplementation.CLASSIC
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.compilerArgs.add("-parameters")
 }
