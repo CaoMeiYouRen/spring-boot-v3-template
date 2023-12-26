@@ -5,19 +5,19 @@
 ## 依赖要求
 
 - Java >= 17
-- Maven >= 3.6
+- Maven >= 7.5
 - Mysql >= 8.0
 
 ## 安装依赖
 
 ```sh
-mvn install
+gradle dependencies --no-daemon
 ```
 
 ## 构建
 
 ```sh
-mvn clean package -Dmaven.test.skip=true
+gradle clean build --no-daemon -x test
 ```
 
 ## 运行
@@ -29,7 +29,7 @@ java -jar target/main.jar
 ## 测试
 
 ```sh
-mvn test
+gradle test --no-daemon
 ```
 
 ## 作者

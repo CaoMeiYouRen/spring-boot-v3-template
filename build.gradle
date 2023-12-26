@@ -1,0 +1,37 @@
+plugins {
+    id 'org.springframework.boot' version '3.2.0'
+    id 'io.spring.dependency-management' version '1.1.4'
+    id 'java'
+}
+
+group = 'ltd.cmyr'
+version = '0.0.1-SNAPSHOT'
+description = 'Demo project for Spring Boot'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+}
+
+repositories {
+    maven {
+        url 'https://maven.aliyun.com/repository/public'
+    }
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web:3.2.0'
+    implementation 'org.springframework.boot:spring-boot-devtools:3.2.0'
+    implementation 'org.projectlombok:lombok:1.18.30'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:3.2.0'
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0'
+    testImplementation 'junit:junit:4.13.2'
+    implementation 'com.baomidou:mybatis-plus-boot-starter:3.5.5'
+    implementation 'com.baomidou:mybatis-plus-generator:3.5.5'
+    implementation 'mysql:mysql-connector-java:8.0.33'
+}
+
+bootJar {
+    archiveFileName = 'main.jar'
+    exclude('org/projectlombok/lombok')
+}

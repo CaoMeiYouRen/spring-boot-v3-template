@@ -3,6 +3,10 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+wrapper
+gradle
+.gradle
+
 ### STS ###
 .apt_generated
 .classpath
