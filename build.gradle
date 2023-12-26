@@ -13,9 +13,9 @@ java {
 }
 
 repositories {
-    // maven {
-    //     url 'https://maven.aliyun.com/repository/public'
-    // }
+    maven {
+        url 'https://maven.aliyun.com/repository/public'
+    }
     mavenCentral()
 }
 
@@ -36,6 +36,6 @@ bootJar {
     exclude('org/projectlombok/lombok')
 }
 
-tasks.withType(JavaCompile).configureEach {
-    options.compilerArgs.add("-parameters")
-}
+// tasks.withType(JavaCompile).configureEach {
+//     options.compilerArgs.add("-parameters")
+// }
