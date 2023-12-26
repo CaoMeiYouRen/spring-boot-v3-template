@@ -15,6 +15,11 @@ jobs:
           java-version: 17
           cache: gradle
           distribution: temurin
+      - name: Cache Gradle dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
       - name: Build with Gradle
         run: gradle clean build --no-daemon -x test
       - name: Test with Gradle
