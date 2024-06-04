@@ -1,26 +1,33 @@
 package ltd.cmyr.demo;
 
-import ltd.cmyr.demo.entity.ResponseData;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import ltd.cmyr.demo.controller.DefaultController;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-@RunWith(SpringRunner.class)
-//指定web环境，随机端口
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class DefaultControllerTest {
+import java.time.Instant;
+import java.time.format.DateTimeFormatter;
+
+@WebMvcTest(DefaultController.class)
+class DefaultControllerTest {
 
     @Autowired
-    private TestRestTemplate testRestTemplate;
+    private MockMvc mockMvc;
 
     @Test
-    public void testHome() {
-        ResponseData context = testRestTemplate.getForObject("/", ResponseData.class);
-        Assert.assertEquals(200, context.getStatusCode());
-        Assert.assertEquals("OK", context.getMessage());
+    void testGetTime() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/")
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.code").value(200))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.message").value("OK"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.data").isNotEmpty())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.data").isString())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.data").value(DateTimeFormatter.ISO_INSTANT.format(Instant.now())));
     }
 }
