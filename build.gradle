@@ -9,13 +9,13 @@ version = '0.0.1-SNAPSHOT'
 description = 'Demo project for Spring Boot'
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_17
+    sourceCompatibility = JavaVersion.VERSION_21
 }
 
 repositories {
-    maven {
-        url 'https://maven.aliyun.com/repository/public'
-    }
+    // maven {
+    //     url='https://maven.aliyun.com/repository/public'
+    // }
     mavenCentral()
 }
 
@@ -35,7 +35,6 @@ bootJar {
     archiveFileName = 'main.jar'
     exclude('org/projectlombok/lombok')
 }
-
-// tasks.withType(JavaCompile).configureEach {
-//     options.compilerArgs.add("-parameters")
-// }
+test {
+    useJUnitPlatform()
+}

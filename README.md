@@ -4,9 +4,9 @@
 
 ## 依赖要求
 
-- Java >= 17
-- Gradle >= 7.5
-- Mysql >= 8.0
+-   Java >= 21
+-   Gradle >= 7.5
+-   Mysql >= 8.0
 
 ## 安装依赖
 
@@ -34,8 +34,7 @@ gradle test --no-daemon
 
 ## 作者
 
-
 👤 **CaoMeiYouRen**
 
-* Website: [https://blog.cmyr.ltd/](https://blog.cmyr.ltd/)
-* GitHub: [@CaoMeiYouRen](https://github.com/CaoMeiYouRen)
+-   Website: [https://blog.cmyr.ltd/](https://blog.cmyr.ltd/)
+-   GitHub: [@CaoMeiYouRen](https://github.com/CaoMeiYouRen)
