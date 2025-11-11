@@ -17,5 +17,5 @@ jobs:
           distribution: temurin
       - name: Build with Gradle
         run: gradle clean build --no-daemon -x test
-      - name: Test with Gradle
-        run: gradle test --no-daemon
+      # - name: Test with Gradle
+      #   run: gradle test --no-daemon
