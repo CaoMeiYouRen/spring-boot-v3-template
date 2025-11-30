@@ -26,8 +26,8 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test:3.5.7'
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:3.0.0'
     testImplementation 'junit:junit:4.13.2'
-    implementation 'com.baomidou:mybatis-plus-boot-starter:3.5.14'
-    implementation 'com.baomidou:mybatis-plus-generator:3.5.14'
+    implementation 'com.baomidou:mybatis-plus-boot-starter:3.5.15'
+    implementation 'com.baomidou:mybatis-plus-generator:3.5.15'
     implementation 'org.mybatis:mybatis-spring:4.0.0'
     implementation 'mysql:mysql-connector-java:8.0.33'
 }
