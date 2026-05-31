@@ -1,6 +1,6 @@
-# spring-boot-v3-template
+# spring-boot-v4-template
 
-基于 Java 的 Spring Boot 3.X 项目模板
+基于 Java 的 Spring Boot 4.X 项目模板
 
 ## 依赖要求
 

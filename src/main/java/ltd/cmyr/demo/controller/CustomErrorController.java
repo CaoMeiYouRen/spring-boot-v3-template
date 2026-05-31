@@ -4,9 +4,9 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import ltd.cmyr.demo.entity.ResponseData;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.web.ServerProperties;
-import org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController;
-import org.springframework.boot.web.servlet.error.DefaultErrorAttributes;
+import org.springframework.boot.autoconfigure.web.WebProperties;
+import org.springframework.boot.webmvc.autoconfigure.error.BasicErrorController;
+import org.springframework.boot.webmvc.error.DefaultErrorAttributes;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -17,14 +17,14 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.Map;
 
 @Controller
-@RequestMapping("${server.error.path:${error.path:/error}}")
+@RequestMapping("${spring.web.error.path:${error.path:/error}}")
 public class CustomErrorController extends BasicErrorController {
 
-    @Value("${server.error.path:${error.path:/error}}")
+    @Value("${spring.web.error.path:${error.path:/error}}")
     private String path;
 
-    public CustomErrorController(ServerProperties serverProperties) {
-        super(new DefaultErrorAttributes(), serverProperties.getError());
+    public CustomErrorController(WebProperties webProperties) {
+        super(new DefaultErrorAttributes(), webProperties.getError());
     }
 
     /**
@@ -45,7 +45,7 @@ public class CustomErrorController extends BasicErrorController {
     public ModelAndView errorHtml(HttpServletRequest request, HttpServletResponse response) {
         //请求的状态
         HttpStatus status = getStatus(request);
-        response.setStatus(getStatus(request).value());
+        response.setStatus(status.value());
         Map<String, Object> model = getErrorAttributes(request,
                 getErrorAttributeOptions(request, MediaType.TEXT_HTML));
         ModelAndView modelAndView = resolveErrorView(request, response, status, model);
